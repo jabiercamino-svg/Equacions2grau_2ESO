@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equacions de 2n grau. Activitats i problemes</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{
+    delimiters:[
+      {left:'$$',right:'$$',display:true},
+      {left:'\\(',right:'\\)',display:false}
+    ],throwOnError:false
+  });"></script>
+
+<style>
+:root{
+  --navy:#0e1d3c; --blue:#1b3d94; --mid:#2f5fc4;
+  --accent:#f0a500; --rose:#e63960; --green:#1aad68;
+  --purple:#7c3aed; --teal:#0d8a8a;
+  --light:#eef3ff; --white:#fff; --gray:#6b7280;
+  --bg:#f2f5fb; --border:#dde4f5;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--navy);line-height:1.6;}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#0e1d3c 0%,#1b3d94 55%,#2f5fc4 100%);
+  padding:58px 24px 72px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 40%,rgba(74,144,217,.18) 0%,transparent 60%),
+             radial-gradient(ellipse at 15% 75%,rgba(240,165,0,.1) 0%,transparent 55%);
+}
+.hero-math{position:absolute;font-family:'Playfair Display',serif;font-size:7rem;font-weight:900;opacity:.04;color:#fff;pointer-events:none;}
+.hero-math.l{left:-10px;top:0;} .hero-math.r{right:-10px;bottom:-20px;}
+.hero-pill{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(240,165,0,.5);color:var(--accent);font-weight:800;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;padding:5px 18px;border-radius:999px;margin-bottom:20px;position:relative;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,3rem);color:#fff;line-height:1.15;margin-bottom:8px;position:relative;}
+.hero h1 em{color:var(--accent);font-style:normal;}
+.hero p{color:rgba(255,255,255,.6);font-size:.95rem;font-weight:600;position:relative;}
+
+/* STICKY NAV */
+.toc{
+  background:var(--white);border-bottom:2px solid var(--border);
+  padding:12px 20px;display:flex;justify-content:center;
+  flex-wrap:wrap;gap:5px 4px;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 12px rgba(14,29,60,.08);
+}
+.toc a{
+  display:inline-flex;align-items:center;gap:4px;
+  background:var(--light);color:var(--blue);
+  font-weight:800;font-size:.73rem;padding:5px 11px;
+  border-radius:999px;text-decoration:none;
+  border:1px solid transparent;transition:all .18s;white-space:nowrap;
+}
+.toc a:hover{background:var(--blue);color:#fff;transform:translateY(-1px);}
+.toc-dot{color:#ccd5ee;font-size:.7rem;align-self:center;}
+
+/* MAIN */
+main{max-width:920px;margin:0 auto;padding:40px 20px 80px;}
+
+/* SECTION HEADER */
+.sec-head{display:flex;align-items:center;gap:14px;margin:58px 0 22px;scroll-margin-top:68px;}
+.sec-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;color:#fff;flex-shrink:0;}
+.ic-blue  {background:linear-gradient(135deg,#1b3d94,#2f5fc4);}
+.ic-green {background:linear-gradient(135deg,#128050,#1aad68);}
+.ic-orange{background:linear-gradient(135deg,#b87000,#f0a500);}
+.ic-rose  {background:linear-gradient(135deg,#a01832,#e63960);}
+.ic-teal  {background:linear-gradient(135deg,#096060,#0d8a8a);}
+.ic-purple{background:linear-gradient(135deg,#5b21b6,#7c3aed);}
+.sec-info h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);}
+.sec-info p{font-size:.83rem;color:var(--gray);font-weight:600;margin-top:2px;}
+
+/* FORMULA STRIP */
+.fml-strip{
+  background:linear-gradient(135deg,var(--navy),#1b3d94);
+  border-radius:14px;padding:14px 24px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:24px;
+}
+.fml-label{font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--accent);flex-shrink:0;}
+.fml-body{font-size:.96rem;font-weight:600;color:#fff;}
+
+/* EXEMPLE */
+.exemple{background:var(--white);border:2px solid var(--accent);border-radius:18px;margin-bottom:24px;overflow:hidden;box-shadow:0 4px 18px rgba(240,165,0,.12);}
+.exemple-header{background:linear-gradient(135deg,#fffbe6,#fff3c0);padding:12px 22px;display:flex;align-items:center;gap:12px;border-bottom:2px solid #ffd84a;}
+.exemple-badge{background:var(--accent);color:#fff;font-weight:900;font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 13px;border-radius:999px;flex-shrink:0;}
+.exemple-title{font-weight:800;font-size:.94rem;color:var(--navy);}
+.exemple-body{padding:20px 24px;}
+.exemple-sub{font-weight:800;font-size:.79rem;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;}
+.exemple-hr{border:none;border-top:1.5px dashed #d8daee;margin:18px 0;}
+
+.step{margin-bottom:14px;}
+.step-label{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:.76rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.step-label::before{content:attr(data-n);background:var(--blue);color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;}
+.step-content{background:var(--light);border-radius:10px;padding:10px 15px;font-size:.91rem;font-weight:600;color:var(--navy);border-left:4px solid var(--mid);}
+.math-block{display:block;text-align:center;padding:7px 0;}
+.concl{background:linear-gradient(135deg,#e6f8ef,#d0f0e0);border:1.5px solid #80d4b0;border-radius:10px;padding:10px 15px;font-weight:800;color:#0d6040;font-size:.92rem;display:flex;align-items:center;gap:8px;margin-top:4px;}
+.concl::before{content:'✓';background:var(--green);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
+.note-tip{font-size:.81rem;color:var(--gray);margin-top:10px;font-weight:600;}
+
+/* EXERCISE CARD */
+.ex-card{background:var(--white);border-radius:18px;border:1.5px solid var(--border);box-shadow:0 4px 18px rgba(14,29,60,.07);margin-bottom:24px;overflow:hidden;transition:transform .2s,box-shadow .2s;scroll-margin-top:68px;}
+.ex-card:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(14,29,60,.12);}
+.ex-header{display:flex;align-items:center;gap:14px;padding:15px 22px;border-bottom:1.5px solid #f0f3fa;}
+.ex-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--mid);min-width:40px;line-height:1;}
+.ex-title{font-size:.97rem;font-weight:800;color:var(--navy);}
+.ex-sub{font-size:.78rem;color:var(--gray);font-weight:600;margin-top:2px;}
+.ex-body{padding:20px 22px;}
+
+/* 2-col grid */
+.apt-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 16px;}
+/* 3-col grid */
+.apt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 16px;}
+/* 5-col for 15-item exercises */
+.apt-grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:8px 12px;}
+.apt{display:flex;align-items:baseline;gap:8px;padding:9px 11px;border-radius:10px;background:var(--light);font-size:.9rem;font-weight:600;transition:background .15s;}
+.apt:hover{background:#d8e5ff;}
+.apt-l{font-weight:900;color:var(--mid);min-width:22px;font-size:.83rem;}
+
+/* COEF TABLE */
+.coef-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:4px;}
+.coef-table th{background:var(--blue);color:#fff;font-weight:800;padding:9px 12px;text-align:center;}
+.coef-table th:first-child{text-align:left;}
+.coef-table td{padding:9px 12px;border-bottom:1px solid var(--border);text-align:center;}
+.coef-table td:first-child{text-align:left;font-weight:700;}
+.coef-table tr:last-child td{border-bottom:none;}
+.coef-table tr:nth-child(even) td{background:#f7f9ff;}
+
+/* PROBLEM CARDS */
+.prob-card{background:var(--white);border-radius:18px;border:1.5px solid var(--border);box-shadow:0 4px 18px rgba(14,29,60,.07);margin-bottom:20px;overflow:hidden;transition:transform .2s,box-shadow .2s;scroll-margin-top:68px;}
+.prob-card:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(14,29,60,.12);}
+.prob-header{display:flex;align-items:center;gap:13px;padding:14px 20px;border-bottom:1.5px solid #f0f3fa;}
+.prob-num{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;font-weight:900;font-size:.9rem;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.prob-tag{font-size:.69rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-left:auto;}
+.pt-nb{background:#e0eaff;color:var(--blue);}
+.pt-ge{background:#d4f0e0;color:#0d6040;}
+.pt-mx{background:#ffe8d0;color:#8a3a00;}
+.prob-body{padding:14px 20px;}
+.prob-text{font-size:.95rem;font-weight:600;color:var(--navy);line-height:1.7;}
+
+/* DIVIDER */
+.divider{height:3px;background:linear-gradient(90deg,var(--navy),var(--mid),var(--accent),transparent);border-radius:999px;margin:52px 0 0;}
+
+/* ANSWERS */
+.answers-section{margin-top:68px;scroll-margin-top:68px;}
+.answers-title{font-family:'Playfair Display',serif;font-size:2rem;color:var(--navy);margin-bottom:26px;padding-bottom:12px;border-bottom:3px solid var(--mid);}
+.ans-card{background:var(--white);border-radius:16px;border:1.5px solid var(--border);margin-bottom:16px;overflow:hidden;box-shadow:0 2px 10px rgba(14,29,60,.06);}
+.ans-header{display:flex;align-items:center;gap:13px;padding:12px 20px;border-bottom:1.5px solid #f0f3fa;cursor:pointer;user-select:none;transition:background .15s;}
+.ans-header:hover{background:#f7f9ff;}
+.ans-num{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--mid);min-width:32px;}
+.ans-num.green{color:var(--green);}
+.ans-ex-title{font-size:.92rem;font-weight:800;color:var(--navy);flex:1;}
+.ans-toggle{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border:none;padding:7px 17px;border-radius:999px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.79rem;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .2s;flex-shrink:0;}
+.ans-toggle:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(26,61,148,.28);}
+.ans-toggle .ch{transition:transform .3s;}
+.ans-toggle.open{background:linear-gradient(135deg,#128050,#1aad68);}
+.ans-toggle.open .ch{transform:rotate(180deg);}
+.ans-body{display:none;padding:16px 20px;animation:fadeSlide .25s ease;}
+.ans-body.visible{display:block;}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(-5px);}to{opacity:1;transform:translateY(0);}}
+
+.ans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;}
+.ans-item{background:var(--light);border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:8px;border:1px solid #c8d8f5;}
+.ans-l{font-weight:900;color:var(--mid);font-size:.83rem;min-width:20px;}
+.ans-v{font-weight:700;font-size:.87rem;color:var(--navy);}
+
+/* 5-col answers for 15-item */
+.ans-grid-5{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px;}
+
+.prob-ans{background:linear-gradient(135deg,#f0f6ff,#e6eeff);border:1.5px solid #b0c8f5;border-radius:12px;padding:14px 18px;font-size:.91rem;font-weight:600;color:var(--navy);line-height:1.75;}
+.prob-ans strong{color:var(--blue);}
+
+/* ans coef table */
+.ans-coef-table{width:100%;border-collapse:collapse;font-size:.83rem;}
+.ans-coef-table th{background:var(--blue);color:#fff;font-weight:800;padding:7px 10px;text-align:center;}
+.ans-coef-table th:first-child{text-align:left;}
+.ans-coef-table td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:center;}
+.ans-coef-table td:first-child{text-align:left;font-weight:700;font-size:.8rem;}
+.ans-coef-table tr:nth-child(even) td{background:#f7f9ff;}
+.ans-coef-table tr:last-child td{border-bottom:none;}
+
+@media(max-width:680px){
+  .apt-grid{grid-template-columns:1fr 1fr;}
+  .apt-grid-5{grid-template-columns:repeat(3,1fr);}
+  .ans-grid{grid-template-columns:repeat(2,1fr);}
+  .ans-grid-5{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:400px){
+  .apt-grid,.apt-grid-5{grid-template-columns:1fr;}
+  .ans-grid,.ans-grid-5{grid-template-columns:1fr;}
+}
+.katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-math l">x²</div>
+  <div class="hero-math r">ax²+bx+c</div>
+  <div class="hero-pill">2n ESO · Matemàtiques</div>
+  <h1>Equacions de 2n grau.<br><em>Activitats i problemes</em></h1>
+  <p>Identificació · Comprovació · Incompletes · Completes · Discriminant · Repàs · Problemes</p>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="toc">
+  <a href="#s-classif">🔎 Identificació</a>
+  <span class="toc-dot">·</span>
+  <a href="#s-comprova">✓ Comprovació</a>
+  <span class="toc-dot">·</span>
+  <a href="#s-t1">📐 Incompletes T1</a>
+  <span class="toc-dot">·</span>
+  <a href="#s-t2">📐 Incompletes T2</a>
+  <span class="toc-dot">·</span>
+  <a href="#s-completes">x= Completes</a>
+  <span class="toc-dot">·</span>
+  <a href="#s-delta">Δ Discriminant</a>
+  <span class="toc-dot">·</span>
+  <a href="#s-repas">🔀 Repàs global</a>
+  <span class="toc-dot">·</span>
+  <a href="#s-problemes">📝 Problemes</a>
+  <span class="toc-dot">·</span>
+  <a href="#s-respostes">📋 Respostes</a>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════
+     EX 1 — IDENTIFICACIÓ I CLASSIFICACIÓ
+═══════════════════════════════════════ -->
+<div class="sec-head" id="s-classif">
+  <div class="sec-icon ic-teal" style="font-size:.85rem;">a,b,c</div>
+  <div class="sec-info">
+    <h2>Identificació i classificació</h2>
+    <p>Reconeix el tipus d'equació i identifica els coeficients \(a\), \(b\) i \(c\)</p>
+  </div>
+</div>
+
+<!-- EXEMPLE 1 -->
+<div class="exemple">
+  <div class="exemple-header">
+    <span class="exemple-badge">Exemple resolt</span>
+    <span class="exemple-title">Classificar una equació i identificar els coeficients</span>
+  </div>
+  <div class="exemple-body">
+    <p style="font-size:.87rem;color:var(--gray);font-weight:600;margin-bottom:14px;">
+      Classifica \(2x^2 - 5x = 0\) i identifica els coeficients.
+    </p>
+    <div class="step">
+      <div class="step-label" data-n="1">És de 2n grau?</div>
+      <div class="step-content">Sí, el grau màxim és 2.</div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="2">Completa o incompleta?</div>
+      <div class="step-content">
+        <b>Incompleta Tipus 2</b>: té \(ax^2\) i \(bx\), però <em>falta</em> el terme independent (\(c=0\)).
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="3">Coeficients</div>
+      <div class="step-content">
+        <span class="math-block">\(a = 2, \quad b = -5, \quad c = 0\)</span>
+      </div>
+    </div>
+    <div class="concl">Incompleta T2 · \(a=2,\; b=-5,\; c=0\)</div>
+    <p class="note-tip">⚠️ Atenció als signes: si l'equació és \(x^2 - 9 = 0\), aleshores \(b = 0\) i \(c = -9\).</p>
+  </div>
+</div>
+
+<!-- EXERCICI 1 -->
+<div class="ex-card" id="ex1">
+  <div class="ex-header">
+    <div class="ex-num">1</div>
+    <div>
+      <div class="ex-title">Classifica les equacions i identifica els coeficients \(a\), \(b\) i \(c\)</div>
+      <div class="ex-sub">Per a cada equació: indica si és de 2n grau, si és completa o incompleta (T1/T2), i escriu els coeficients</div>
+    </div>
+  </div>
+  <div class="ex-body">
+    <table class="coef-table">
+      <thead>
+        <tr>
+          <th>Equació</th>
+          <th>2n grau?</th>
+          <th>Tipus</th>
+          <th>\(a\)</th>
+          <th>\(b\)</th>
+          <th>\(c\)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>\(x^2 + 4x + 3 = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(5x - 2 = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(x^2 - 25 = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(3x^2 - 9x = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(2x^2 - 7x + 3 = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(-x^2 + 4x - 4 = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(4x^2 = 36\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(x^3 + x = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(x^2 = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(5x^2 + 3x = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(x^2 - x + 1 = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>\(x^3 - 3x^2 + 2x = 0\)</td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     EX 2 — COMPROVACIÓ DE SOLUCIONS
+═══════════════════════════════════════ -->
+<div class="divider"></div>
+
+<div class="sec-head" id="s-comprova">
+  <div class="sec-icon ic-blue">✓</div>
+  <div class="sec-info">
+    <h2>Comprovació de solucions</h2>
+    <p>Substitueix el valor donat i comprova si l'equació es verifica</p>
+  </div>
+</div>
+
+<!-- EXEMPLE 2 -->
+<div class="exemple">
+  <div class="exemple-header">
+    <span class="exemple-badge">Exemple resolt</span>
+    <span class="exemple-title">Comprovar si un valor és solució</span>
+  </div>
+  <div class="exemple-body">
+    <p style="font-size:.87rem;color:var(--gray);font-weight:600;margin-bottom:14px;">
+      Comprova si \(x = -3\) és solució de \(x^2 + 2x - 3 = 0\).
+    </p>
+    <div class="step">
+      <div class="step-label" data-n="1">Substitueix \(x = -3\) a l'equació</div>
+      <div class="step-content">
+        <span class="math-block">\((-3)^2 + 2\cdot(-3) - 3 = 9 - 6 - 3 = 0\)</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="2">Interpreta el resultat</div>
+      <div class="step-content">
+        El resultat és \(0\) ✓ → el valor <strong>sí</strong> és solució.
+      </div>
+    </div>
+    <div class="concl">\(x = -3\) és solució de l'equació</div>
+    <p class="note-tip">⚠️ Si el resultat fos diferent de \(0\), el valor <em>no</em> seria solució.</p>
+  </div>
+</div>
+
+<!-- EXERCICI 2 -->
+<div class="ex-card" id="ex2">
+  <div class="ex-header">
+    <div class="ex-num">2</div>
+    <div>
+      <div class="ex-title">Comprova si el valor donat és solució de l'equació</div>
+      <div class="ex-sub">Substitueix \(x\) pel valor indicat i comprova si el resultat és zero</div>
+    </div>
+  </div>
+  <div class="ex-body">
+    <div class="apt-grid-2">
+      <div class="apt"><span class="apt-l">a)</span>\(x^2-16=0 \;\to\; x=4\)</div>
+      <div class="apt"><span class="apt-l">b)</span>\(x^2+4x-5=0 \;\to\; x=1\)</div>
+      <div class="apt"><span class="apt-l">c)</span>\(x^2-6x+8=0 \;\to\; x=2\)</div>
+      <div class="apt"><span class="apt-l">d)</span>\(x^2+x-6=0 \;\to\; x=-3\)</div>
+      <div class="apt"><span class="apt-l">e)</span>\(2x^2-3x-2=0 \;\to\; x=2\)</div>
+      <div class="apt"><span class="apt-l">f)</span>\(x^2-6x+9=0 \;\to\; x=4\)</div>
+      <div class="apt"><span class="apt-l">g)</span>\(3x^2+x-2=0 \;\to\; x=-1\)</div>
+      <div class="apt"><span class="apt-l">h)</span>\(x^2-4x-5=0 \;\to\; x=5\)</div>
+      <div class="apt"><span class="apt-l">i)</span>\(2x^2+5x+3=0 \;\to\; x=-1\)</div>
+      <div class="apt"><span class="apt-l">j)</span>\(x^2+2x+1=0 \;\to\; x=-1\)</div>
+      <div class="apt"><span class="apt-l">k)</span>\(x^2-9=0 \;\to\; x=-3\)</div>
+      <div class="apt"><span class="apt-l">l)</span>\(x^2+x+1=0 \;\to\; x=0\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     EX 3 — INCOMPLETES TIPUS 1
+═══════════════════════════════════════ -->
+<div class="divider"></div>
+
+<div class="sec-head" id="s-t1">
+  <div class="sec-icon ic-blue" style="font-size:.95rem;">T1</div>
+  <div class="sec-info">
+    <h2>Equacions incompletes — Tipus 1</h2>
+    <p>Forma \(ax^2 + c = 0\) · Aïlla \(x^2\), divideix per \(a\) i aplica l'arrel quadrada</p>
+  </div>
+</div>
+
+<!-- EXEMPLE 3 -->
+<div class="exemple">
+  <div class="exemple-header">
+    <span class="exemple-badge">Exemple resolt</span>
+    <span class="exemple-title">Equació incompleta Tipus 1: \(ax^2 + c = 0\)</span>
+  </div>
+  <div class="exemple-body">
+    <p style="font-size:.87rem;color:var(--gray);font-weight:600;margin-bottom:14px;">
+      Resol: \(3x^2 - 48 = 0\)
+    </p>
+    <div class="step">
+      <div class="step-label" data-n="1">Aïlla el terme amb \(x^2\)</div>
+      <div class="step-content"><span class="math-block">\(3x^2 = 48\)</span></div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="2">Divideix pel coeficient \(a\)</div>
+      <div class="step-content"><span class="math-block">\(x^2 = \dfrac{48}{3} = 16\)</span></div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="3">Arrel quadrada als dos membres</div>
+      <div class="step-content">
+        Si \(x^2 = k\) amb \(k > 0\) → \(x = \pm\sqrt{k}\)
+        <span class="math-block">\(x = \pm\sqrt{16} = \pm4\)</span>
+      </div>
+    </div>
+    <div class="concl">Solucions: \(x_1 = 4\) &nbsp;i&nbsp; \(x_2 = -4\)</div>
+    <p class="note-tip">⚠️ Si \(k < 0\) no hi ha solució real. Si \(k = 0\) la única solució és \(x = 0\).</p>
+  </div>
+</div>
+
+<!-- EXERCICI 3 — 15 apartats -->
+<div class="ex-card" id="ex3">
+  <div class="ex-header">
+    <div class="ex-num">3</div>
+    <div>
+      <div class="ex-title">Equacions incompletes — Tipus 1: \(ax^2 + c = 0\)</div>
+      <div class="ex-sub">Aïlla \(x^2\), divideix per \(a\) i aplica l'arrel quadrada</div>
+    </div>
+  </div>
+  <div class="ex-body">
+    <div class="apt-grid">
+      <div class="apt"><span class="apt-l">a)</span>\(x^2 = 49\)</div>
+      <div class="apt"><span class="apt-l">b)</span>\(x^2 - 64 = 0\)</div>
+      <div class="apt"><span class="apt-l">c)</span>\(x^2 = 144\)</div>
+      <div class="apt"><span class="apt-l">d)</span>\(x^2 - 81 = 0\)</div>
+      <div class="apt"><span class="apt-l">e)</span>\(x^2 = 36\)</div>
+      <div class="apt"><span class="apt-l">f)</span>\(2x^2 - 32 = 0\)</div>
+      <div class="apt"><span class="apt-l">g)</span>\(5x^2 = 125\)</div>
+      <div class="apt"><span class="apt-l">h)</span>\(3x^2 = 75\)</div>
+      <div class="apt"><span class="apt-l">i)</span>\(4x^2 - 100 = 0\)</div>
+      <div class="apt"><span class="apt-l">j)</span>\(2x^2 = 98\)</div>
+      <div class="apt"><span class="apt-l">k)</span>\(x^2 + 9 = 0\)</div>
+      <div class="apt"><span class="apt-l">l)</span>\(9x^2 - 16 = 0\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     EX 4 — INCOMPLETES TIPUS 2
+═══════════════════════════════════════ -->
+<div class="divider"></div>
+
+<div class="sec-head" id="s-t2">
+  <div class="sec-icon ic-blue" style="font-size:.95rem;">T2</div>
+  <div class="sec-info">
+    <h2>Equacions incompletes — Tipus 2</h2>
+    <p>Forma \(ax^2 + bx = 0\) · Treu \(x\) factor comú i aplica la regla del producte zero</p>
+  </div>
+</div>
+
+<!-- EXEMPLE 4 -->
+<div class="exemple">
+  <div class="exemple-header">
+    <span class="exemple-badge">Exemple resolt</span>
+    <span class="exemple-title">Equació incompleta Tipus 2: \(ax^2 + bx = 0\)</span>
+  </div>
+  <div class="exemple-body">
+    <p style="font-size:.87rem;color:var(--gray);font-weight:600;margin-bottom:14px;">
+      Resol: \(2x^2 - 10x = 0\)
+    </p>
+    <div class="step">
+      <div class="step-label" data-n="1">Treu \(x\) com a factor comú</div>
+      <div class="step-content"><span class="math-block">\(x(2x - 10) = 0\)</span></div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="2">Regla del producte zero</div>
+      <div class="step-content"><span class="math-block">\(x = 0 \quad\text{o}\quad 2x - 10 = 0\)</span></div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="3">Resol cada cas</div>
+      <div class="step-content"><span class="math-block">\(x_1 = 0 \qquad 2x = 10 \;\Rightarrow\; x_2 = 5\)</span></div>
+    </div>
+    <div class="concl">Solucions: \(x_1 = 0\) &nbsp;i&nbsp; \(x_2 = 5\)</div>
+    <p class="note-tip">⚠️ Les equacions T2 sempre tenen dues solucions: \(x=0\) i una altra.</p>
+  </div>
+</div>
+
+<!-- EXERCICI 4 — 15 apartats -->
+<div class="ex-card" id="ex4">
+  <div class="ex-header">
+    <div class="ex-num">4</div>
+    <div>
+      <div class="ex-title">Equacions incompletes — Tipus 2: \(ax^2 + bx = 0\)</div>
+      <div class="ex-sub">Treu \(x\) factor comú i aplica la regla del producte zero</div>
+    </div>
+  </div>
+  <div class="ex-body">
+    <div class="apt-grid">
+      <div class="apt"><span class="apt-l">a)</span>\(x^2 + 7x = 0\)</div>
+      <div class="apt"><span class="apt-l">b)</span>\(x^2 - 9x = 0\)</div>
+      <div class="apt"><span class="apt-l">c)</span>\(x^2 + 11x = 0\)</div>
+      <div class="apt"><span class="apt-l">d)</span>\(x^2 - 4x = 0\)</div>
+      <div class="apt"><span class="apt-l">e)</span>\(x^2 + 6x = 0\)</div>
+      <div class="apt"><span class="apt-l">f)</span>\(2x^2 + 10x = 0\)</div>
+      <div class="apt"><span class="apt-l">g)</span>\(3x^2 - 18x = 0\)</div>
+      <div class="apt"><span class="apt-l">h)</span>\(5x^2 + 30x = 0\)</div>
+      <div class="apt"><span class="apt-l">i)</span>\(4x^2 - 28x = 0\)</div>
+      <div class="apt"><span class="apt-l">j)</span>\(2x^2 - 8x = 0\)</div>
+      <div class="apt"><span class="apt-l">k)</span>\(x^2 = 5x\)</div>
+      <div class="apt"><span class="apt-l">l)</span>\(3x^2 = 12x\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     EX 5 — EQUACIONS COMPLETES
+═══════════════════════════════════════ -->
+<div class="divider"></div>
+
+<div class="sec-head" id="s-completes">
+  <div class="sec-icon ic-green" style="font-size:.8rem;letter-spacing:-1px;">x=</div>
+  <div class="sec-info">
+    <h2>Equacions completes — Fórmula general</h2>
+    <p>Primer amb \(a=1\), després amb \(a \neq 1\). Sempre la mateixa fórmula.</p>
+  </div>
+</div>
+
+<div class="fml-strip">
+  <span class="fml-label">Fórmula general</span>
+  <span class="fml-body">$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</span>
+</div>
+
+<!-- EXEMPLE 5 -->
+<div class="exemple">
+  <div class="exemple-header">
+    <span class="exemple-badge">Exemple resolt</span>
+    <span class="exemple-title">Fórmula general — de \(a=1\) a \(a \neq 1\)</span>
+  </div>
+  <div class="exemple-body">
+
+    <p class="exemple-sub">APARTAT A — \(a = 1\): \(\;x^2 + 3x - 10 = 0\)</p>
+    <div class="step">
+      <div class="step-label" data-n="1">Identifica els coeficients i calcula \(\Delta\)</div>
+      <div class="step-content">
+        <span class="math-block">\(a=1,\; b=3,\; c=-10 \;\Rightarrow\; \Delta = 9+40 = 49\)</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="2">Aplica la fórmula</div>
+      <div class="step-content">
+        <span class="math-block">\(x = \dfrac{-3 \pm \sqrt{49}}{2} = \dfrac{-3 \pm 7}{2}\)</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="3">Calcula les dues solucions</div>
+      <div class="step-content">
+        <span class="math-block">\(x_1 = \dfrac{-3+7}{2} = 2 \qquad x_2 = \dfrac{-3-7}{2} = -5\)</span>
+      </div>
+    </div>
+    <div class="concl">\(x_1 = 2\) &nbsp;i&nbsp; \(x_2 = -5\)</div>
+
+    <hr class="exemple-hr">
+
+    <p class="exemple-sub">APARTAT B — \(a \neq 1\): \(\;2x^2 - 7x + 3 = 0\)</p>
+    <div class="step">
+      <div class="step-label" data-n="1">Identifica els coeficients i calcula \(\Delta\)</div>
+      <div class="step-content">
+        <span class="math-block">\(a=2,\; b=-7,\; c=3 \;\Rightarrow\; \Delta = 49-24 = 25\)</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="2">Aplica la fórmula (atenció: \(2a = 4\))</div>
+      <div class="step-content">
+        <span class="math-block">\(x = \dfrac{7 \pm \sqrt{25}}{4} = \dfrac{7 \pm 5}{4}\)</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="3">Calcula les dues solucions</div>
+      <div class="step-content">
+        <span class="math-block">\(x_1 = \dfrac{7+5}{4} = 3 \qquad x_2 = \dfrac{7-5}{4} = \dfrac{1}{2}\)</span>
+      </div>
+    </div>
+    <div class="concl">\(x_1 = 3\) &nbsp;i&nbsp; \(x_2 = \dfrac{1}{2}\)</div>
+  </div>
+</div>
+
+<!-- EXERCICI 5 -->
+<div class="ex-card" id="ex5">
+  <div class="ex-header">
+    <div class="ex-num">5</div>
+    <div>
+      <div class="ex-title">Resol amb la fórmula general</div>
+      <div class="ex-sub">Els primers apartats amb \(a=1\), els últims amb \(a \neq 1\)</div>
+    </div>
+  </div>
+  <div class="ex-body">
+    <div class="apt-grid">
+      <div class="apt"><span class="apt-l">a)</span>\(x^2 + 7x + 10 = 0\)</div>
+      <div class="apt"><span class="apt-l">b)</span>\(x^2 - 5x + 6 = 0\)</div>
+      <div class="apt"><span class="apt-l">c)</span>\(x^2 + 6x + 8 = 0\)</div>
+      <div class="apt"><span class="apt-l">d)</span>\(x^2 - 9x + 14 = 0\)</div>
+      <div class="apt"><span class="apt-l">e)</span>\(x^2 + 2x - 8 = 0\)</div>
+      <div class="apt"><span class="apt-l">f)</span>\(x^2 - x - 12 = 0\)</div>
+      <div class="apt"><span class="apt-l">g)</span>\(2x^2 + 9x + 4 = 0\)</div>
+      <div class="apt"><span class="apt-l">h)</span>\(2x^2 - 5x + 2 = 0\)</div>
+      <div class="apt"><span class="apt-l">i)</span>\(3x^2 + 8x + 4 = 0\)</div>
+      <div class="apt"><span class="apt-l">j)</span>\(2x^2 + x - 3 = 0\)</div>
+      <div class="apt"><span class="apt-l">k)</span>\(3x^2 - 10x + 3 = 0\)</div>
+      <div class="apt"><span class="apt-l">l)</span>\(6x^2 - 7x + 2 = 0\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     EX 6 — DISCRIMINANT
+═══════════════════════════════════════ -->
+<div class="divider"></div>
+
+<div class="sec-head" id="s-delta">
+  <div class="sec-icon ic-orange" style="font-size:1.1rem;">Δ</div>
+  <div class="sec-info">
+    <h2>El discriminant</h2>
+    <p>Determina quantes solucions té l'equació <em>sense</em> resoldre-la</p>
+  </div>
+</div>
+
+<div class="fml-strip" style="flex-direction:column;align-items:flex-start;gap:10px;">
+  <span class="fml-label">Fórmula</span>
+  <span class="fml-body">\(\Delta = b^2 - 4ac\)</span>
+  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;">
+    <li style="color:#fff;font-size:.93rem;font-weight:600;display:flex;align-items:center;gap:8px;"><span style="background:var(--accent);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:900;flex-shrink:0;">▶</span>\(\Delta > 0\): l'equació té <strong style="color:var(--accent);">2 solucions</strong> reals diferents</li>
+    <li style="color:#fff;font-size:.93rem;font-weight:600;display:flex;align-items:center;gap:8px;"><span style="background:var(--accent);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:900;flex-shrink:0;">▶</span>\(\Delta = 0\): l'equació té <strong style="color:var(--accent);">1 solució doble</strong></li>
+    <li style="color:#fff;font-size:.93rem;font-weight:600;display:flex;align-items:center;gap:8px;"><span style="background:var(--accent);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:900;flex-shrink:0;">▶</span>\(\Delta < 0\): l'equació <strong style="color:var(--accent);">no té solució real</strong></li>
+  </ul>
+</div>
+
+<!-- EXEMPLE 6 -->
+<div class="exemple">
+  <div class="exemple-header">
+    <span class="exemple-badge">Exemple resolt</span>
+    <span class="exemple-title">Càlcul del discriminant</span>
+  </div>
+  <div class="exemple-body">
+    <p style="font-size:.87rem;color:var(--gray);font-weight:600;margin-bottom:14px;">
+      Calcula \(\Delta\) de \(2x^2 - 4x + 2 = 0\) i digues quantes solucions té.
+    </p>
+    <div class="step">
+      <div class="step-label" data-n="1">Identifica els coeficients</div>
+      <div class="step-content"><span class="math-block">\(a=2, \quad b=-4, \quad c=2\)</span></div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="2">Calcula \(\Delta\)</div>
+      <div class="step-content">
+        <span class="math-block">\(\Delta = (-4)^2 - 4 \cdot 2 \cdot 2 = 16 - 16 = 0\)</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="3">Interpreta</div>
+      <div class="step-content">\(\Delta = 0\) → l'equació té <strong>una solució doble</strong>.</div>
+    </div>
+    <div class="concl">\(\Delta = 0\) → 1 solució doble</div>
+  </div>
+</div>
+
+<!-- EXERCICI 6 -->
+<div class="ex-card" id="ex6">
+  <div class="ex-header">
+    <div class="ex-num">6</div>
+    <div>
+      <div class="ex-title">Calcula el discriminant i indica quantes solucions té cada equació</div>
+      <div class="ex-sub">Identifica \(a,b,c\) i calcula \(\Delta = b^2 - 4ac\)</div>
+    </div>
+  </div>
+  <div class="ex-body">
+    <div class="apt-grid">
+      <div class="apt"><span class="apt-l">a)</span>\(x^2 + 6x + 5 = 0\)</div>
+      <div class="apt"><span class="apt-l">b)</span>\(x^2 - 4x + 4 = 0\)</div>
+      <div class="apt"><span class="apt-l">c)</span>\(x^2 + 2x + 5 = 0\)</div>
+      <div class="apt"><span class="apt-l">d)</span>\(x^2 - 10x + 25 = 0\)</div>
+      <div class="apt"><span class="apt-l">e)</span>\(2x^2 + 5x - 3 = 0\)</div>
+      <div class="apt"><span class="apt-l">f)</span>\(3x^2 - 6x + 3 = 0\)</div>
+      <div class="apt"><span class="apt-l">g)</span>\(x^2 + 4x + 8 = 0\)</div>
+      <div class="apt"><span class="apt-l">h)</span>\(2x^2 - 7x + 3 = 0\)</div>
+      <div class="apt"><span class="apt-l">i)</span>\(4x^2 - 4x + 1 = 0\)</div>
+      <div class="apt"><span class="apt-l">j)</span>\(3x^2 + 2x + 4 = 0\)</div>
+      <div class="apt"><span class="apt-l">k)</span>\(5x^2 - 10x + 5 = 0\)</div>
+      <div class="apt"><span class="apt-l">l)</span>\(2x^2 + x - 6 = 0\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     EX 7 — REPÀS GLOBAL
+═══════════════════════════════════════ -->
+<div class="divider"></div>
+
+<div class="sec-head" id="s-repas">
+  <div class="sec-icon ic-rose" style="font-size:1rem;">🔀</div>
+  <div class="sec-info">
+    <h2>Repàs global</h2>
+    <p>Barreja de tots els tipus · Tu has de decidir quin mètode aplicar a cada equació</p>
+  </div>
+</div>
+
+<!-- EXEMPLE 7 — senzill -->
+<div class="exemple">
+  <div class="exemple-header">
+    <span class="exemple-badge">Exemple resolt</span>
+    <span class="exemple-title">Producte de factors igual a zero</span>
+  </div>
+  <div class="exemple-body">
+    <p style="font-size:.87rem;color:var(--gray);font-weight:600;margin-bottom:14px;">
+      Resol: \((x + 3)(x - 1) = 0\)
+    </p>
+    <div class="step">
+      <div class="step-label" data-n="1">Identifica el tipus</div>
+      <div class="step-content">L'equació és un <strong>producte de dos factors igual a zero</strong>. S'aplica directament la regla del producte zero.</div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="2">Un dels dos factors ha de ser zero</div>
+      <div class="step-content"><span class="math-block">\(x + 3 = 0 \quad\text{o}\quad x - 1 = 0\)</span></div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="3">Solucions</div>
+      <div class="step-content"><span class="math-block">\(x_1 = -3 \qquad x_2 = 1\)</span></div>
+    </div>
+    <div class="concl">\(x_1 = -3\) &nbsp;i&nbsp; \(x_2 = 1\)</div>
+    <p class="note-tip">💡 Recorda els tres mètodes: T1 → arrel quadrada · T2 → factor comú · Completa → fórmula general.</p>
+  </div>
+</div>
+
+<!-- EXERCICI 7 -->
+<div class="ex-card" id="ex7">
+  <div class="ex-header">
+    <div class="ex-num">7</div>
+    <div>
+      <div class="ex-title">Repàs global — identifica el tipus i resol</div>
+      <div class="ex-sub">Barreja de T1, T2 i equacions completes. Tria el mètode adequat per a cada una.</div>
+    </div>
+  </div>
+  <div class="ex-body">
+    <div class="apt-grid">
+      <div class="apt"><span class="apt-l">a)</span>\(x^2 - 36 = 0\)</div>
+      <div class="apt"><span class="apt-l">b)</span>\(x^2 + 5x = 0\)</div>
+      <div class="apt"><span class="apt-l">c)</span>\(x^2 - 4x + 3 = 0\)</div>
+      <div class="apt"><span class="apt-l">d)</span>\(x^2 + 9x + 14 = 0\)</div>
+      <div class="apt"><span class="apt-l">e)</span>\(3x^2 = 75\)</div>
+      <div class="apt"><span class="apt-l">f)</span>\(2x^2 - 14x = 0\)</div>
+      <div class="apt"><span class="apt-l">g)</span>\(2x^2 + 3x - 5 = 0\)</div>
+      <div class="apt"><span class="apt-l">h)</span>\(x^2 - x - 30 = 0\)</div>
+      <div class="apt"><span class="apt-l">i)</span>\(x(x - 8) = 0\)</div>
+      <div class="apt"><span class="apt-l">j)</span>\(4x^2 - 36 = 0\)</div>
+      <div class="apt"><span class="apt-l">k)</span>\((x-2)(x+5) = 0\)</div>
+      <div class="apt"><span class="apt-l">l)</span>\(3x^2 - 11x + 6 = 0\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PROBLEMES
+═══════════════════════════════════════ -->
+<div class="divider"></div>
+
+<div class="sec-head" id="s-problemes">
+  <div class="sec-icon ic-green">📝</div>
+  <div class="sec-info">
+    <h2>Problemes</h2>
+    <p>Planteja l'equació, resol-la i interpreta la solució en el context del problema</p>
+  </div>
+</div>
+
+<!-- EXEMPLE PROBLEMA -->
+<div class="exemple">
+  <div class="exemple-header">
+    <span class="exemple-badge">Exemple resolt</span>
+    <span class="exemple-title">Com plantejar i resoldre un problema</span>
+  </div>
+  <div class="exemple-body">
+    <p style="font-size:.87rem;color:var(--gray);font-weight:600;margin-bottom:14px;">
+      <em>La base d'un rectangle és 5 m més llarga que l'alçada. L'àrea és 36 m². Quines són les dimensions?</em>
+    </p>
+    <div class="step">
+      <div class="step-label" data-n="1">Defineix la incògnita</div>
+      <div class="step-content">Sigui \(x\) l'alçada (m). La base és \(x+5\).</div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="2">Planteja l'equació</div>
+      <div class="step-content">
+        <span class="math-block">\(x(x+5) = 36 \;\Rightarrow\; x^2 + 5x - 36 = 0\)</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="3">Resol</div>
+      <div class="step-content">
+        <span class="math-block">\(\Delta = 25+144 = 169 \;\Rightarrow\; x = \dfrac{-5 \pm 13}{2}\)</span>
+        <span class="math-block">\(x_1 = 4 \qquad x_2 = -9\)</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label" data-n="4">Interpreta i descarta valors no vàlids</div>
+      <div class="step-content">\(x_2 = -9\) no té sentit (mesura negativa). Alçada \(= 4\) m, base \(= 9\) m.</div>
+    </div>
+    <div class="concl">Les dimensions del rectangle són <strong>4 m × 9 m</strong>.</div>
+  </div>
+</div>
+
+<div class="prob-card" id="pr1">
+  <div class="prob-header">
+    <div class="prob-num">P1</div>
+    <strong style="font-size:.93rem;color:var(--navy);">Nombres consecutius</strong>
+    <span class="prob-tag pt-nb">Nombres</span>
+  </div>
+  <div class="prob-body">
+    <p class="prob-text">El producte de dos nombres consecutius positius és 110. Quins són? Planteja l'equació i resol-la.</p>
+  </div>
+</div>
+
+<div class="prob-card" id="pr2">
+  <div class="prob-header">
+    <div class="prob-num">P2</div>
+    <strong style="font-size:.93rem;color:var(--navy);">Rectangle: àrea i dimensions</strong>
+    <span class="prob-tag pt-ge">Geometria</span>
+  </div>
+  <div class="prob-body">
+    <p class="prob-text">Un rectangle té una àrea de 60 m². El costat llarg és 7 m més gran que el curt. Quines són les dimensions? Planteja l'equació i resol-la.</p>
+  </div>
+</div>
+
+<div class="prob-card" id="pr3">
+  <div class="prob-header">
+    <div class="prob-num">P3</div>
+    <strong style="font-size:.93rem;color:var(--navy);">Nombre i el seu quadrat</strong>
+    <span class="prob-tag pt-nb">Nombres</span>
+  </div>
+  <div class="prob-body">
+    <p class="prob-text">La suma d'un nombre positiu i el seu quadrat és 56. Quin és el nombre? Planteja l'equació i resol-la.</p>
+  </div>
+</div>
+
+<div class="prob-card" id="pr4">
+  <div class="prob-header">
+    <div class="prob-num">P4</div>
+    <strong style="font-size:.93rem;color:var(--navy);">Rectangle: perímetre i àrea</strong>
+    <span class="prob-tag pt-ge">Geometria</span>
+  </div>
+  <div class="prob-body">
+    <p class="prob-text">Un rectangle té un perímetre de 34 m i una àrea de 60 m². Quines són les seves dimensions? Planteja l'equació i resol-la.</p>
+  </div>
+</div>
+
+<div class="prob-card" id="pr5">
+  <div class="prob-header">
+    <div class="prob-num">P5</div>
+    <strong style="font-size:.93rem;color:var(--navy);">Nombres parells consecutius</strong>
+    <span class="prob-tag pt-nb">Nombres</span>
+  </div>
+  <div class="prob-body">
+    <p class="prob-text">La suma dels quadrats de dos nombres parells consecutius és 100. Quins són? Planteja l'equació i resol-la.</p>
+  </div>
+</div>
+
+<div class="prob-card" id="pr6">
+  <div class="prob-header">
+    <div class="prob-num">P6</div>
+    <strong style="font-size:.93rem;color:var(--navy);">Triangle rectangle — Teorema de Pitàgores</strong>
+    <span class="prob-tag pt-mx">Geometria+</span>
+  </div>
+  <div class="prob-body">
+    <p class="prob-text">En un triangle rectangle, la hipotenusa mesura 15 cm. Un catet és 3 cm més gran que l'altre. Quant mesuren els catets? Planteja l'equació i resol-la.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     RESPOSTES
+═══════════════════════════════════════ -->
+<div class="answers-section" id="s-respostes">
+  <h2 class="answers-title">📋 Respostes</h2>
+
+  <!-- R1 -->
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('r1','b1')">
+      <div class="ans-num">1</div>
+      <div class="ans-ex-title">Identificació i classificació</div>
+      <button class="ans-toggle" id="b1"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="r1">
+      <table class="ans-coef-table">
+        <thead><tr><th>Equació</th><th>2n grau?</th><th>Tipus</th><th>\(a\)</th><th>\(b\)</th><th>\(c\)</th></tr></thead>
+        <tbody>
+          <tr><td>\(x^2+4x+3=0\)</td><td>Sí</td><td>Completa</td><td>1</td><td>4</td><td>3</td></tr>
+          <tr><td>\(5x-2=0\)</td><td>No (1r grau)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>\(x^2-25=0\)</td><td>Sí</td><td>Incompl. T1</td><td>1</td><td>0</td><td>−25</td></tr>
+          <tr><td>\(3x^2-9x=0\)</td><td>Sí</td><td>Incompl. T2</td><td>3</td><td>−9</td><td>0</td></tr>
+          <tr><td>\(2x^2-7x+3=0\)</td><td>Sí</td><td>Completa</td><td>2</td><td>−7</td><td>3</td></tr>
+          <tr><td>\(-x^2+4x-4=0\)</td><td>Sí</td><td>Completa</td><td>−1</td><td>4</td><td>−4</td></tr>
+          <tr><td>\(4x^2=36\)</td><td>Sí</td><td>Incompl. T1</td><td>4</td><td>0</td><td>−36</td></tr>
+          <tr><td>\(x^3+x=0\)</td><td>No (3r grau)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>\(x^2=0\)</td><td>Sí</td><td>Incompl. T1</td><td>1</td><td>0</td><td>0</td></tr>
+          <tr><td>\(5x^2+3x=0\)</td><td>Sí</td><td>Incompl. T2</td><td>5</td><td>3</td><td>0</td></tr>
+          <tr><td>\(x^2-x+1=0\)</td><td>Sí</td><td>Completa</td><td>1</td><td>−1</td><td>1</td></tr>
+          <tr><td>\(x^3-3x^2+2x=0\)</td><td>No (3r grau)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- R2 -->
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('r2','b2')">
+      <div class="ans-num">2</div>
+      <div class="ans-ex-title">Comprovació de solucions</div>
+      <button class="ans-toggle" id="b2"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="r2">
+      <div class="ans-grid">
+        <div class="ans-item"><span class="ans-l">a)</span><span class="ans-v">✅ Sí</span></div>
+        <div class="ans-item"><span class="ans-l">b)</span><span class="ans-v">✅ Sí</span></div>
+        <div class="ans-item"><span class="ans-l">c)</span><span class="ans-v">✅ Sí</span></div>
+        <div class="ans-item"><span class="ans-l">d)</span><span class="ans-v">✅ Sí</span></div>
+        <div class="ans-item"><span class="ans-l">e)</span><span class="ans-v">✅ Sí</span></div>
+        <div class="ans-item"><span class="ans-l">f)</span><span class="ans-v">❌ No (val 1)</span></div>
+        <div class="ans-item"><span class="ans-l">g)</span><span class="ans-v">✅ Sí</span></div>
+        <div class="ans-item"><span class="ans-l">h)</span><span class="ans-v">✅ Sí</span></div>
+        <div class="ans-item"><span class="ans-l">i)</span><span class="ans-v">✅ Sí</span></div>
+        <div class="ans-item"><span class="ans-l">j)</span><span class="ans-v">✅ Sí</span></div>
+        <div class="ans-item"><span class="ans-l">k)</span><span class="ans-v">✅ Sí</span></div>
+        <div class="ans-item"><span class="ans-l">l)</span><span class="ans-v">❌ No (val 1)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- R3 -->
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('r3','b3')">
+      <div class="ans-num">3</div>
+      <div class="ans-ex-title">Equacions incompletes — Tipus 1</div>
+      <button class="ans-toggle" id="b3"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="r3">
+      <div class="ans-grid">
+        <div class="ans-item"><span class="ans-l">a)</span><span class="ans-v">\(x=\pm7\)</span></div>
+        <div class="ans-item"><span class="ans-l">b)</span><span class="ans-v">\(x=\pm8\)</span></div>
+        <div class="ans-item"><span class="ans-l">c)</span><span class="ans-v">\(x=\pm12\)</span></div>
+        <div class="ans-item"><span class="ans-l">d)</span><span class="ans-v">\(x=\pm9\)</span></div>
+        <div class="ans-item"><span class="ans-l">e)</span><span class="ans-v">\(x=\pm6\)</span></div>
+        <div class="ans-item"><span class="ans-l">f)</span><span class="ans-v">\(x=\pm4\)</span></div>
+        <div class="ans-item"><span class="ans-l">g)</span><span class="ans-v">\(x=\pm5\)</span></div>
+        <div class="ans-item"><span class="ans-l">h)</span><span class="ans-v">\(x=\pm5\)</span></div>
+        <div class="ans-item"><span class="ans-l">i)</span><span class="ans-v">\(x=\pm5\)</span></div>
+        <div class="ans-item"><span class="ans-l">j)</span><span class="ans-v">\(x=\pm7\)</span></div>
+        <div class="ans-item"><span class="ans-l">k)</span><span class="ans-v">Sense solució ℝ</span></div>
+        <div class="ans-item"><span class="ans-l">l)</span><span class="ans-v">\(x=\pm\tfrac{4}{3}\)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- R4 -->
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('r4','b4')">
+      <div class="ans-num">4</div>
+      <div class="ans-ex-title">Equacions incompletes — Tipus 2</div>
+      <button class="ans-toggle" id="b4"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="r4">
+      <div class="ans-grid">
+        <div class="ans-item"><span class="ans-l">a)</span><span class="ans-v">\(x=0\) o \(x=-7\)</span></div>
+        <div class="ans-item"><span class="ans-l">b)</span><span class="ans-v">\(x=0\) o \(x=9\)</span></div>
+        <div class="ans-item"><span class="ans-l">c)</span><span class="ans-v">\(x=0\) o \(x=-11\)</span></div>
+        <div class="ans-item"><span class="ans-l">d)</span><span class="ans-v">\(x=0\) o \(x=4\)</span></div>
+        <div class="ans-item"><span class="ans-l">e)</span><span class="ans-v">\(x=0\) o \(x=-6\)</span></div>
+        <div class="ans-item"><span class="ans-l">f)</span><span class="ans-v">\(x=0\) o \(x=-5\)</span></div>
+        <div class="ans-item"><span class="ans-l">g)</span><span class="ans-v">\(x=0\) o \(x=6\)</span></div>
+        <div class="ans-item"><span class="ans-l">h)</span><span class="ans-v">\(x=0\) o \(x=-6\)</span></div>
+        <div class="ans-item"><span class="ans-l">i)</span><span class="ans-v">\(x=0\) o \(x=7\)</span></div>
+        <div class="ans-item"><span class="ans-l">j)</span><span class="ans-v">\(x=0\) o \(x=4\)</span></div>
+        <div class="ans-item"><span class="ans-l">k)</span><span class="ans-v">\(x=0\) o \(x=5\)</span></div>
+        <div class="ans-item"><span class="ans-l">l)</span><span class="ans-v">\(x=0\) o \(x=4\)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- R5 -->
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('r5','b5')">
+      <div class="ans-num">5</div>
+      <div class="ans-ex-title">Equacions completes — Fórmula general</div>
+      <button class="ans-toggle" id="b5"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="r5">
+      <div class="ans-grid">
+        <div class="ans-item"><span class="ans-l">a)</span><span class="ans-v">\(x=-2,\; x=-5\)</span></div>
+        <div class="ans-item"><span class="ans-l">b)</span><span class="ans-v">\(x=2,\; x=3\)</span></div>
+        <div class="ans-item"><span class="ans-l">c)</span><span class="ans-v">\(x=-2,\; x=-4\)</span></div>
+        <div class="ans-item"><span class="ans-l">d)</span><span class="ans-v">\(x=2,\; x=7\)</span></div>
+        <div class="ans-item"><span class="ans-l">e)</span><span class="ans-v">\(x=2,\; x=-4\)</span></div>
+        <div class="ans-item"><span class="ans-l">f)</span><span class="ans-v">\(x=4,\; x=-3\)</span></div>
+        <div class="ans-item"><span class="ans-l">g)</span><span class="ans-v">\(x=-\tfrac{1}{2},\; x=-4\)</span></div>
+        <div class="ans-item"><span class="ans-l">h)</span><span class="ans-v">\(x=2,\; x=\tfrac{1}{2}\)</span></div>
+        <div class="ans-item"><span class="ans-l">i)</span><span class="ans-v">\(x=-\tfrac{2}{3},\; x=-2\)</span></div>
+        <div class="ans-item"><span class="ans-l">j)</span><span class="ans-v">\(x=1,\; x=-\tfrac{3}{2}\)</span></div>
+        <div class="ans-item"><span class="ans-l">k)</span><span class="ans-v">\(x=3,\; x=\tfrac{1}{3}\)</span></div>
+        <div class="ans-item"><span class="ans-l">l)</span><span class="ans-v">\(x=\tfrac{2}{3},\; x=\tfrac{1}{2}\)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- R6 -->
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('r6','b6')">
+      <div class="ans-num">6</div>
+      <div class="ans-ex-title">Discriminant</div>
+      <button class="ans-toggle" id="b6"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="r6">
+      <div class="ans-grid">
+        <div class="ans-item"><span class="ans-l">a)</span><span class="ans-v">\(\Delta=16\) → 2 sol.</span></div>
+        <div class="ans-item"><span class="ans-l">b)</span><span class="ans-v">\(\Delta=0\) → 1 sol.</span></div>
+        <div class="ans-item"><span class="ans-l">c)</span><span class="ans-v">\(\Delta=-16\) → cap</span></div>
+        <div class="ans-item"><span class="ans-l">d)</span><span class="ans-v">\(\Delta=0\) → 1 sol.</span></div>
+        <div class="ans-item"><span class="ans-l">e)</span><span class="ans-v">\(\Delta=49\) → 2 sol.</span></div>
+        <div class="ans-item"><span class="ans-l">f)</span><span class="ans-v">\(\Delta=0\) → 1 sol.</span></div>
+        <div class="ans-item"><span class="ans-l">g)</span><span class="ans-v">\(\Delta=-16\) → cap</span></div>
+        <div class="ans-item"><span class="ans-l">h)</span><span class="ans-v">\(\Delta=25\) → 2 sol.</span></div>
+        <div class="ans-item"><span class="ans-l">i)</span><span class="ans-v">\(\Delta=0\) → 1 sol.</span></div>
+        <div class="ans-item"><span class="ans-l">j)</span><span class="ans-v">\(\Delta=-44\) → cap</span></div>
+        <div class="ans-item"><span class="ans-l">k)</span><span class="ans-v">\(\Delta=0\) → 1 sol.</span></div>
+        <div class="ans-item"><span class="ans-l">l)</span><span class="ans-v">\(\Delta=49\) → 2 sol.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- R7 -->
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('r7','b7')">
+      <div class="ans-num">7</div>
+      <div class="ans-ex-title">Repàs global</div>
+      <button class="ans-toggle" id="b7"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="r7">
+      <div class="ans-grid">
+        <div class="ans-item"><span class="ans-l">a)</span><span class="ans-v">\(x=\pm6\)</span></div>
+        <div class="ans-item"><span class="ans-l">b)</span><span class="ans-v">\(x=0,\; x=-5\)</span></div>
+        <div class="ans-item"><span class="ans-l">c)</span><span class="ans-v">\(x=1,\; x=3\)</span></div>
+        <div class="ans-item"><span class="ans-l">d)</span><span class="ans-v">\(x=-2,\; x=-7\)</span></div>
+        <div class="ans-item"><span class="ans-l">e)</span><span class="ans-v">\(x=\pm5\)</span></div>
+        <div class="ans-item"><span class="ans-l">f)</span><span class="ans-v">\(x=0,\; x=7\)</span></div>
+        <div class="ans-item"><span class="ans-l">g)</span><span class="ans-v">\(x=1,\; x=-\tfrac{5}{2}\)</span></div>
+        <div class="ans-item"><span class="ans-l">h)</span><span class="ans-v">\(x=6,\; x=-5\)</span></div>
+        <div class="ans-item"><span class="ans-l">i)</span><span class="ans-v">\(x=0,\; x=8\)</span></div>
+        <div class="ans-item"><span class="ans-l">j)</span><span class="ans-v">\(x=\pm3\)</span></div>
+        <div class="ans-item"><span class="ans-l">k)</span><span class="ans-v">\(x=2,\; x=-5\)</span></div>
+        <div class="ans-item"><span class="ans-l">l)</span><span class="ans-v">\(x=3,\; x=\tfrac{2}{3}\)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RP1-RP6 -->
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('rp1','bp1')">
+      <div class="ans-num green">P1</div>
+      <div class="ans-ex-title">Nombres consecutius</div>
+      <button class="ans-toggle" id="bp1"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="rp1">
+      <div class="prob-ans">
+        Sigui \(n\) el primer nombre; el segon és \(n+1\).<br>
+        \(n(n+1)=110 \;\Rightarrow\; n^2+n-110=0\)<br>
+        \(\Delta = 1+440=441 \;\Rightarrow\; \sqrt{441}=21\)<br>
+        \(n = \dfrac{-1+21}{2} = 10\) &nbsp;(o bé \(n=-11\))<br>
+        <strong>Resposta: els nombres positius són 10 i 11.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('rp2','bp2')">
+      <div class="ans-num green">P2</div>
+      <div class="ans-ex-title">Rectangle: àrea i dimensions</div>
+      <button class="ans-toggle" id="bp2"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="rp2">
+      <div class="prob-ans">
+        Sigui \(x\) el costat curt; el llarg és \(x+7\).<br>
+        \(x(x+7)=60 \;\Rightarrow\; x^2+7x-60=0\)<br>
+        \(\Delta = 49+240=289 \;\Rightarrow\; \sqrt{289}=17\)<br>
+        \(x = \dfrac{-7+17}{2}=5\) m &nbsp;(descartem \(x=-12\))<br>
+        <strong>Resposta: 5 m i 12 m.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('rp3','bp3')">
+      <div class="ans-num green">P3</div>
+      <div class="ans-ex-title">Nombre i el seu quadrat</div>
+      <button class="ans-toggle" id="bp3"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="rp3">
+      <div class="prob-ans">
+        \(n+n^2=56 \;\Rightarrow\; n^2+n-56=0\)<br>
+        \(\Delta = 1+224=225 \;\Rightarrow\; \sqrt{225}=15\)<br>
+        \(n = \dfrac{-1+15}{2}=7\) &nbsp;(descartem \(n=-8\))<br>
+        <strong>Resposta: el nombre és 7.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('rp4','bp4')">
+      <div class="ans-num green">P4</div>
+      <div class="ans-ex-title">Rectangle: perímetre i àrea</div>
+      <button class="ans-toggle" id="bp4"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="rp4">
+      <div class="prob-ans">
+        \(2(a+b)=34 \Rightarrow a+b=17 \Rightarrow b=17-a\)<br>
+        \(a(17-a)=60 \Rightarrow a^2-17a+60=0\)<br>
+        \(\Delta = 289-240=49 \;\Rightarrow\; \sqrt{49}=7\)<br>
+        \(a = \dfrac{17+7}{2}=12\) m, \(b=5\) m<br>
+        <strong>Resposta: 12 m i 5 m.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('rp5','bp5')">
+      <div class="ans-num green">P5</div>
+      <div class="ans-ex-title">Nombres parells consecutius</div>
+      <button class="ans-toggle" id="bp5"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="rp5">
+      <div class="prob-ans">
+        Sigui \(n\) el primer nombre parell; el segon és \(n+2\).<br>
+        \(n^2+(n+2)^2=100 \;\Rightarrow\; n^2+2n-48=0\)<br>
+        \(\Delta = 4+192=196 \;\Rightarrow\; \sqrt{196}=14\)<br>
+        \(n = \dfrac{-2+14}{2}=6\)<br>
+        <strong>Resposta: 6 i 8.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="ans-card">
+    <div class="ans-header" onclick="tog('rp6','bp6')">
+      <div class="ans-num green">P6</div>
+      <div class="ans-ex-title">Triangle rectangle — Pitàgores</div>
+      <button class="ans-toggle" id="bp6"><span class="ch">▼</span>&nbsp;Mostra la resposta</button>
+    </div>
+    <div class="ans-body" id="rp6">
+      <div class="prob-ans">
+        Sigui \(x\) el catet curt; l'altre és \(x+3\).<br>
+        \(x^2+(x+3)^2=225 \;\Rightarrow\; x^2+3x-108=0\)<br>
+        \(\Delta = 9+432=441 \;\Rightarrow\; \sqrt{441}=21\)<br>
+        \(x = \dfrac{-3+21}{2}=9\) cm &nbsp;(descartem \(x=-12\))<br>
+        <strong>Resposta: catets de 9 cm i 12 cm.</strong><br>
+        Comprova: \(9^2+12^2=81+144=225=15^2\) ✓
+      </div>
+    </div>
+  </div>
+
+</div><!-- /answers-section -->
+</main>
+
+<script>
+function tog(bodyId, btnId) {
+  const body = document.getElementById(bodyId);
+  const btn  = document.getElementById(btnId);
+  const open = body.classList.toggle('visible');
+  btn.classList.toggle('open', open);
+  btn.innerHTML = open
+    ? '<span class="ch">▲</span>&nbsp;Amaga la resposta'
+    : '<span class="ch">▼</span>&nbsp;Mostra la resposta';
+}
+</script>
+</body>
+</html>
